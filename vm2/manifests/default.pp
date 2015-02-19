@@ -3,7 +3,7 @@
 
 node default {
 
-  $myhostname = "node3"
+  $myhostname = "node2"
   $domain_name_server_ip="192.168.50.2"
   
   # setup name

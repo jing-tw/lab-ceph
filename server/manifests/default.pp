@@ -3,7 +3,7 @@
 
 node default {
 
-  $myhostname = "ceph-deploy"
+  $myhostname = "ceph-deploy-server"
   
   # setup name
   file { "/etc/hostname": 		content => $myhostname; 	}

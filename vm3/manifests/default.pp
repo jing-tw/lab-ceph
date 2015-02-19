@@ -1,14 +1,15 @@
-# Setup auto setup network interface
+# Setup hostname and domain name server
 # by Jing.
-# Reference
-# 	https://forge.puppetlabs.com/adrien/network
 
 node default {
+
+  $myhostname = "node3"
+  $domain_name_server_ip="192.168.50.2"
+  
   # setup name
-  file { "/etc/hostname": 		content => "vm3"; 	}
-  exec { "setup hostname":		command => "/bin/hostname vm3",	}
+  file { "/etc/hostname": 		content => $myhostname; 	}
+  exec { "setup hostname":		command => "/bin/hostname ${myhostname}",	}
   
   # setup customized DNS server
-  file { "/etc/resolv.conf": content => "nameserver 192.168.50.2"; }
-  
+  file { "/etc/resolv.conf": content => "nameserver ${domain_name_server_ip}"; }
 }
