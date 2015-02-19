@@ -1,4 +1,4 @@
-# lab-2-dns
+# lab-ceph
 
 A test lab for deployment the ceph system at home
 
