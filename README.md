@@ -13,5 +13,8 @@ by Jing.
 	- puppet module install adrien-network
 
 ### Usage:
-
+1. ~/test/lab/lab-ceph/server$ vagrant up && vagrant ssh
+2. ~/test/lab/lab-ceph/node1$ vagrant up && vagrant ssh
+3. ~/test/lab/lab-ceph/node2$ vagrant up && vagrant ssh
+4. ~/test/lab/lab-ceph/node3$ vagrant up && vagrant ssh
 
