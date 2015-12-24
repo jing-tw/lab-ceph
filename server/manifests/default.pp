@@ -1,4 +1,4 @@
-# Setup DNS server
+# Setup admin-node 
 # by Jing.
 
 node default {
