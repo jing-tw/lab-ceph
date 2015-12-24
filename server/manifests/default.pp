@@ -3,7 +3,12 @@
 #   [node1] vagrant up && vagrant ssh
 #   [node2] vagrant up && vagrant ssh
 #   [node3] vagrant up && vagrant ssh
-#   [admin-node] vagrant up && vagrant ssh
+#   [admin-node] vagrant up 
+# TODO fix
+#   [admin-node] vagrant provision
+#   vagrant ssh
+#   sudo su
+#   ssh node1  # for test ssh without password
 # by Jing.
 
 node default {
