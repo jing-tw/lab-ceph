@@ -13,8 +13,13 @@ by Jing.
 	- puppet module install adrien-network
 
 ### Usage:
-1. ~/test/lab/lab-ceph/server$ vagrant up && vagrant ssh
-2. ~/test/lab/lab-ceph/node1$ vagrant up && vagrant ssh
-3. ~/test/lab/lab-ceph/node2$ vagrant up && vagrant ssh
-4. ~/test/lab/lab-ceph/node3$ vagrant up && vagrant ssh
+1. Start DNS Server
+	- ~/lab-ceph/server$ vagrant up
+2. Get Ready the Node for Ceph Deploy
+	- ~/lab-ceph/node1$ vagrant up && vagrant ssh
+	- ~/lab-ceph/node2$ vagrant up && vagrant ssh
+ 	- ~/lab-ceph/node3$ vagrant up && vagrant ssh
+3. Start the Ceph Deploy Node
+	- ~/lab-ceph/admin-node$ vagrant up && vagrant ssh
+
 
