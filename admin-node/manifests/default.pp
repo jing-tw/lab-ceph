@@ -51,7 +51,11 @@ node default {
     command => '/bin/echo Enable Password-Less SSH OK',
     onlyif => [
       "/bin/echo -e 'y\n'|/usr/bin/ssh-keygen -q -t rsa -N \"\" -f /root/.ssh/id_rsa",
-      "/usr/bin/sudo /usr/bin/sshpass -p 1234 /usr/bin/ssh-copy-id ceph-user@node1 -o StrictHostKeyChecking=no"
+      "/usr/bin/sudo /usr/bin/sshpass -p 1234 /usr/bin/ssh-copy-id ceph-user@node1 -o StrictHostKeyChecking=no",
+
+      "/usr/bin/sudo /usr/bin/sshpass -p 1234 /usr/bin/ssh-copy-id ceph-user@node2 -o StrictHostKeyChecking=no",
+
+      "/usr/bin/sudo /usr/bin/sshpass -p 1234 /usr/bin/ssh-copy-id ceph-user@node3 -o StrictHostKeyChecking=no"
     ],
   
    require => [

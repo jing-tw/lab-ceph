@@ -22,4 +22,12 @@ by Jing.
 3. Start the Ceph Deploy Node
 	- ~/lab-ceph/admin-node$ vagrant up && vagrant ssh
 
-
+### Followup:
+[admin-node]
+    mkdir my-cluster
+    cd my-cluster/
+    ceph-deploy new node1
+    vi ceph.conf 
+    ceph-deploy install admin-node node1 node2 node3
+    ceph-deploy mon create-initial
+    ceph-deploy osd prepare node2:/var/local/osd0
