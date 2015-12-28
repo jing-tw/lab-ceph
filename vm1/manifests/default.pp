@@ -1,4 +1,5 @@
 # Setup hostname and domain name server
+# monitor node
 # by Jing.
 
 node default {

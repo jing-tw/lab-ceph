@@ -26,7 +26,7 @@ node default {
 
   
   # Install Ceph-deploy
-  exec { 'Install ceph':              
+  exec { 'Install ceph-deploy':              
     command => '/bin/echo Install Ceph-deploy',
     onlyif => [
       "/usr/bin/wget -q -O- 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc' | sudo apt-key add -" ,
@@ -55,7 +55,8 @@ node default {
 
       "/usr/bin/sudo /usr/bin/sshpass -p 1234 /usr/bin/ssh-copy-id ceph-user@node2 -o StrictHostKeyChecking=no",
 
-      "/usr/bin/sudo /usr/bin/sshpass -p 1234 /usr/bin/ssh-copy-id ceph-user@node3 -o StrictHostKeyChecking=no"
+      "/usr/bin/sudo /usr/bin/sshpass -p 1234 /usr/bin/ssh-copy-id ceph-user@node3 -o StrictHostKeyChecking=no",
+      "/bin/mkdir /root/my-cluster"
     ],
   
    require => [
@@ -63,6 +64,20 @@ node default {
       File['/etc/resolv.conf']
    ]
  }
+
+  # Create Ceph Cluster
+  exec { "create ceph cluster":
+    command => '/bin/echo Create Ceph Cluster OK',
+    cwd => '/root/my-cluster',   
+    onlyif => [
+      "/usr/bin/ceph-deploy new node1", 
+      "/bin/echo \"osd pool default size = 2\" >> /root/my-cluster/ceph.conf"
+    ],
+    require => [
+       Exec['Install ceph-deploy'],
+       Exec['Enable Password-Less SSH']
+    ]
+  }
 
   # Let ssh login to the node with default user
     file { "/root/.ssh/config": 

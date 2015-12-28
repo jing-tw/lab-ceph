@@ -17,7 +17,8 @@ node default {
   exec { 'ready ceph':
     command => '/bin/echo Ready for Ceph-deploy',
     onlyif => [
-      "/usr/bin/apt-get update && /usr/bin/apt-get install ntp openssh-server -y"
+      "/usr/bin/apt-get update && /usr/bin/apt-get install ntp openssh-server -y",
+      "/usr/bin/sudo mkdir /var/local/osd1"
     ]
   }
  # add ceph-user for installation
