@@ -29,3 +29,21 @@ echo "key copy completed"
 #ls -la /vagrant/1
 #ls -la /vagrant/2
 
+# add osd
+sudo docker run -d --net=host \
+--privileged=true \
+-v /etc/ceph:/etc/ceph \
+-v /var/lib/ceph/:/var/lib/ceph \
+-v /dev/:/dev/ \
+-e OSD_DEVICE=/dev/sdb \
+-e OSD_FORCE_ZAP=1 \
+ceph/daemon osd_ceph_disk
+
+# install radosgw
+sleep 10
+#sudo docker run -d --net=host -p 80:8080  -v /var/lib/ceph/:/var/lib/ceph -v /etc/ceph:/etc/ceph ceph/daemon rgw
+
+# check radosgw
+#curl -v  $strBridgedIP:8080 
+
+
