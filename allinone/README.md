@@ -1,6 +1,11 @@
 # All in One ceph
 ## Start Deployment
 ```bash
+git clone https://github.com/jing-tw/lab-ceph.git
+cd lab-ceph
+git checkout ceph-docker
+
+cd allinone
 vagrant up
 ```
 ## Detail
