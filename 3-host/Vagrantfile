@@ -1,0 +1,78 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.box_check_update = false
+
+  
+  config.vm.network "public_network", bridge: "wlan0"
+  
+   config.vm.define "host-1" do |myrole|
+        myrole.vm.hostname = "host-1"
+        myrole.vm.provision "file", source:"common.sh", destination:"common.sh"
+        myrole.vm.provision "shell", path:"host-1.sh", :args=> ENV['Gateway_Subnet']
+ 
+        
+        myrole.vm.provider "virtualbox" do |vb|
+            # Customize the amount of memory on the VM:
+            vb.memory = "1024"
+            
+            # disk
+            file_to_disk = "./tmp/host-1_large_disk.vdi"
+            unless File.exist?(file_to_disk)
+                vb.customize ['createhd', '--filename', file_to_disk, '--size', 10 * 1024]
+            end
+            vb.customize ['storageattach', :id, '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
+
+        end # end of vm provider
+    end # end of config
+
+   config.vm.define "host-2" do |myrole|
+        myrole.vm.hostname = "host-2"
+        myrole.vm.provision "file", source:"common.sh", destination:"common.sh"
+        myrole.vm.provision "shell", path:"host.sh", :args=> ENV['Gateway_Subnet']
+ 
+        
+        myrole.vm.provider "virtualbox" do |vb|
+            # Customize the amount of memory on the VM:
+            vb.memory = "1024"
+            
+            # disk
+            file_to_disk = "./tmp/host-2_large_disk.vdi"
+            unless File.exist?(file_to_disk)
+                vb.customize ['createhd', '--filename', file_to_disk, '--size', 10 * 1024]
+            end
+            vb.customize ['storageattach', :id, '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
+        end # end of vm provider
+    end # end of config
+
+    config.vm.define "host-3" do |myrole|
+        myrole.vm.hostname = "host-3"
+        myrole.vm.provision "file", source:"common.sh", destination:"common.sh"
+        myrole.vm.provision "shell", path:"host.sh", :args=> ENV['Gateway_Subnet']
+ 
+        
+        myrole.vm.provider "virtualbox" do |vb|
+            # Customize the amount of memory on the VM:
+            vb.memory = "1024"
+            
+            # disk
+            file_to_disk = "./tmp/host-3_large_disk.vdi"
+            unless File.exist?(file_to_disk)
+                vb.customize ['createhd', '--filename', file_to_disk, '--size', 10 * 1024]
+            end
+            vb.customize ['storageattach', :id, '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
+        end # end of vm provider
+    end # end of config
+
+end
+
+

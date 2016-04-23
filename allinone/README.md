@@ -1,4 +1,4 @@
-# all in one ceph
+# All in One ceph
 ## Start Deployment
 ```bash
 vagrant up
