@@ -1,6 +1,11 @@
 # ceph/daemon example
 ## Start Deployment
 ```bash
+git clone https://github.com/jing-tw/lab-ceph.git
+cd lab-ceph
+git checkout ceph-docker
+
+cd 3-host
 . ./vagrant_up.sh
 ```
 
