@@ -1,6 +1,7 @@
 # My Ceph-Dock Usage
 
 ## Deployment
+Lab
 - allinone: Deploy a ceph with rbd, filesystem, radosgw in docker via vagrant. See: https://github.com/jing-tw/lab-ceph/tree/ceph-docker/allinone.
 
 - 3-host: Deploy a ceph system with rbd, radosgw in docker via vagrant. See: https://github.com/jing-tw/lab-ceph/tree/ceph-docker/3-host.
