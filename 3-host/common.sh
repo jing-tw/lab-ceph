@@ -22,7 +22,7 @@ function fun_install_docker(){
 function fun_get_public_ip(){
     strSubNet=$1
     if [ -z "$strSubNet" ]; then
-        echo "strSubNet is empty. Do you run with . ./vagrant_up.sh?"
+        echo "Error: strSubNet is empty. Do you run with . ./vagrant_up.sh?"
         exit
     fi
 
@@ -30,7 +30,7 @@ function fun_get_public_ip(){
     echo strSubNet=$strSubNet
     strBridgedIP=$(ip addr | grep ${strSubNet} | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
     if [ -z "$strBridgedIP" ]; then
-        echo "strBridgedIP is empty."
+        echo "Error: strBridgedIP is empty."
         exit
     fi
     echo strBridgedIP=$strBridgedIP

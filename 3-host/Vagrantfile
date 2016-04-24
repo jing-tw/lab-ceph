@@ -38,7 +38,7 @@ Vagrant.configure(2) do |config|
    config.vm.define "host-2" do |myrole|
         myrole.vm.hostname = "host-2"
         myrole.vm.provision "file", source:"common.sh", destination:"common.sh"
-        myrole.vm.provision "shell", path:"host.sh", :args=> ENV['Gateway_Subnet']
+        myrole.vm.provision "shell", path:"host-2.sh", :args=> ENV['Gateway_Subnet']
  
         
         myrole.vm.provider "virtualbox" do |vb|
@@ -57,7 +57,7 @@ Vagrant.configure(2) do |config|
     config.vm.define "host-3" do |myrole|
         myrole.vm.hostname = "host-3"
         myrole.vm.provision "file", source:"common.sh", destination:"common.sh"
-        myrole.vm.provision "shell", path:"host.sh", :args=> ENV['Gateway_Subnet']
+        myrole.vm.provision "shell", path:"host-3.sh", :args=> ENV['Gateway_Subnet']
  
         
         myrole.vm.provider "virtualbox" do |vb|

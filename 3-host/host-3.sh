@@ -33,3 +33,16 @@ sudo docker run -d --net=host \
 -e OSD_DEVICE=/dev/sdb \
 -e OSD_FORCE_ZAP=1 \
 ceph/daemon osd_ceph_disk
+
+sleep 10
+
+# add radowgw server
+docker run -d --net=host \
+-v /var/lib/ceph/:/var/lib/ceph \
+-v /etc/ceph:/etc/ceph \
+ceph/daemon rgw
+
+echo ===========================
+echo Verify radosgw
+echo curl -v $strBridgedIP":8080"
+echo 
