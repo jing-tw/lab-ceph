@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/jing/test/ceph/git/lab-ceph/misc/01-create-ceph-docker-box","disabled":false,"__vagrantfile":true}}}

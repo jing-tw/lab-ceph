@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/19094024/is-there-any-way-to-clone-a-vagrant-box-that-is-already-installed

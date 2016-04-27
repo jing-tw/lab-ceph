@@ -39,6 +39,7 @@ sudo docker run -d --net=host \
 -e OSD_FORCE_ZAP=1 \
 ceph/daemon osd_ceph_disk
 
+# RADOSGW should be installed when cluster is ready
 # install radosgw
 #sleep 10
 

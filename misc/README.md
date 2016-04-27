@@ -1,3 +1,3 @@
 ```
-. ./vagrant_up.sh
+. ./vagrant_deploy.sh
 ```
