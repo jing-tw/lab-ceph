@@ -11,7 +11,7 @@ echo strBridgedIP=$strBridgedIP
 
 fun_install_docker
 
-sudo docker run -d --net=host \
+sudo docker run -d --name=mon --net=host \
 -v /etc/ceph:/etc/ceph \
 -v /var/lib/ceph/:/var/lib/ceph \
 -e MON_IP=$strBridgedIP \
@@ -30,7 +30,7 @@ echo "key copy completed"
 #ls -la /vagrant/2
 
 # add osd
-sudo docker run -d --net=host \
+sudo docker run -d --name=osd1 --net=host \
 --privileged=true \
 -v /etc/ceph:/etc/ceph \
 -v /var/lib/ceph/:/var/lib/ceph \
