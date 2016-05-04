@@ -4,7 +4,7 @@ function fun_install_docker(){
     # for https transport
     [ -e /usr/lib/apt/methods/https ] || {
       apt-get -y update
-      apt-get -y install apt-transport-https
+      apt-get -y --force-yes install apt-transport-https
     }
 
     # for apt-key
@@ -16,7 +16,7 @@ function fun_install_docker(){
     apt-get -y update
 
     # install the docker
-    apt-get -y install lxc-docker
+    apt-get -y --force-yes install lxc-docker
 }
 
 function fun_get_ip(){
