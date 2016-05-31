@@ -22,6 +22,9 @@ tmr=$(timer)
 Gateway_Subnet=`ip r | grep default | cut -d ' ' -f 3|awk -F '[.]' '{printf "%s.%s.%s.\n",$1,$2,$3}'`
 Gateway_Subnet=${Gateway_Subnet} vagrant up
 
+# enable csphfs
+. ./enable_cephfs.sh | sed "s/^/[enable_cephfs.sh] /"
+
 echo ===========================
 echo Verify Ceph Healthy
 vagrant ssh host-1 -c "sudo docker ps"
