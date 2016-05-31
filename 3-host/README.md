@@ -6,9 +6,18 @@ cd lab-ceph
 git checkout ceph-docker
 
 cd 3-host
-. ./vagrant_up.sh
+. ./up.sh
 ```
 
+## Test
+
+### Login Ceph hosts
+```bash
+vagrant ssh host-1
+vagrant ssh host-2
+vagrant ssh host-3
+
+```
 ## More Detail
 Google doc: 
 https://docs.google.com/document/d/1ZkG3X0RmwCHTiuu_3usYpoZRbxeHQhrZQ-54EhsQuL8/edit?usp=sharing

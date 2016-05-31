@@ -45,4 +45,4 @@ ceph/daemon rgw
 echo ===========================
 echo Verify radosgw
 echo curl -v $strBridgedIP":8080"
-echo 
+echo  

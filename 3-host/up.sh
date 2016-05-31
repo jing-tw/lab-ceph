@@ -22,4 +22,14 @@ tmr=$(timer)
 Gateway_Subnet=`ip r | grep default | cut -d ' ' -f 3|awk -F '[.]' '{printf "%s.%s.%s.\n",$1,$2,$3}'`
 Gateway_Subnet=${Gateway_Subnet} vagrant up
 
+echo ===========================
+echo Verify Ceph Healthy
+vagrant ssh host-1 -c "sudo docker ps"
+vagrant ssh host-1 -c "sudo docker exec -i -t mon ceph -s"
+echo 
+echo Login Ceph hosts
+echo  vagrant ssh host-1
+echo  vagrant ssh host-2
+echo  vagrant ssh host-3
+
 echo "Elapsed time:$(timer $tmr)"
