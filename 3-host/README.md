@@ -9,9 +9,18 @@ cd 3-host
 . ./up.sh
 ```
 
-## Test
+## Verification
+### Verification: Ceph Healthy
+```bash
+vagrant ssh host-1 -c "sudo docker ps"
+vagrant ssh host-1 -c "sudo docker exec -i -t mon ceph -s"
+```
 
-### Login Ceph hosts
+### Verification: Object Storage
+```bash
+curl -v {RADOSGW SERVER IP}:8080
+````
+## Login Ceph hosts
 ```bash
 vagrant ssh host-1
 vagrant ssh host-2
