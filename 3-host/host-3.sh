@@ -17,7 +17,7 @@ sudo mkdir /var/lib/ceph
 sudo cp -fr /vagrant/1/* /etc/ceph/
 sudo cp -fr /vagrant/2/* /var/lib/ceph/
 
-sudo docker run -d --name=mon --net=host \
+sudo docker run -d --restart=always --name=mon --net=host \
 -v /etc/ceph:/etc/ceph \
 -v /var/lib/ceph/:/var/lib/ceph \
 -e MON_IP=$strBridgedIP \
@@ -25,7 +25,7 @@ sudo docker run -d --name=mon --net=host \
 ceph/daemon mon
 
 # add osd
-sudo docker run -d --name=osd --net=host \
+sudo docker run -d --restart=always --name=osd --net=host \
 --privileged=true \
 -v /etc/ceph:/etc/ceph \
 -v /var/lib/ceph/:/var/lib/ceph \
@@ -37,7 +37,7 @@ ceph/daemon osd_ceph_disk
 sleep 10
 
 # add radowgw server
-docker run -d --net=host \
+docker run -d --restart=always --net=host \
 -v /var/lib/ceph/:/var/lib/ceph \
 -v /etc/ceph:/etc/ceph \
 ceph/daemon rgw

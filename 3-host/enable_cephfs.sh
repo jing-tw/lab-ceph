@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # add mds server on host-1
-vagrant ssh host-1 -c "sudo docker run -d --name=mds-$RANDOM --net=host \
+vagrant ssh host-1 -c "sudo docker run -d --restart=always --name=mds-$RANDOM --net=host \
 -v /etc/ceph:/etc/ceph \
 -v /var/lib/ceph/:/var/lib/ceph \
 -e CEPHFS_CREATE=1 \

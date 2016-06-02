@@ -11,7 +11,7 @@ echo strBridgedIP=$strBridgedIP
 
 fun_install_docker
 
-sudo docker run -d --name=mon --net=host \
+sudo docker run -d --restart=always --name=mon --net=host \
 -v /etc/ceph:/etc/ceph \
 -v /var/lib/ceph/:/var/lib/ceph \
 -e MON_IP=$strBridgedIP \
@@ -19,7 +19,7 @@ sudo docker run -d --name=mon --net=host \
 ceph/daemon mon
 
 # copy key
-sleep 30
+sleep 10  # wait for monitor ready
 rm -fr /vagrant/1; mkdir /vagrant/1
 rm -fr /vagrant/2; mkdir /vagrant/2
 sudo cp -fr /etc/ceph/* /vagrant/1/
